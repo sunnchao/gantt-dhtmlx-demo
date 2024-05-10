@@ -10,19 +10,18 @@ import { reactive, ref, toRefs, onBeforeMount, onMounted, watchEffect, defineExp
 import { gantt } from 'dhtmlx-gantt'
 import 'dhtmlx-gantt/codebase/dhtmlxgantt.css'
 import demoData from './ganttData.json'
- 
-const data = reactive({})
 
+const data = reactive({})
 const ganttColumns = ref([
-  { align: 'left', name: 'text', label: '任务名称1', tree: true },
-  { align: 'left', name: 'start_date', label: '开始时间1' },
+  { align: 'left', name: 'text', label: '任务名称', tree: true },
+  { align: 'left', name: 'start_date', label: '开始时间' },
   { name:"add", width:44, resize:true, hide:false}
 ])
  
 //初始化甘特图
 const initGantt = () => {
   gantt.config.grid_width = 350
-  gantt.config.add_column = false //添加符号
+  gantt.config.add_column = true //添加符号
  
   //时间轴图表中，如果不设置，只有行边框，区分上下的任务，设置之后带有列的边框，整个时间轴变成格子状。
   gantt.config.autofit = false
@@ -49,7 +48,7 @@ defineExpose({
 </script>
 <style scoped lang="scss">
 .my-gantt {
-  height: 800px;
+  height: 100vh;
   width: 100vw;
   .gantt-container {
     width: 100%;
